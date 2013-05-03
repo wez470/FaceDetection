@@ -4,8 +4,12 @@ import SimpleOpenNI.*;
 //opencv wrapper libraries
 import monclubelec.javacvPro.*;
 
+//for Rectangle
+import java.awt.*;
+
 OpenCV opencv; 
 SimpleOpenNI cam;
+Rectangle[] faceRect;
 
 void setup()
 {
@@ -15,20 +19,18 @@ void setup()
   
   opencv = new OpenCV(this);
   opencv.allocate(cam.rgbWidth(), cam.rgbHeight()); //size of image buffer
+  opencv.cascade("C:/opencv/data/haarcascades/", "haarcascade_frontalface_alt.xml"); //initialize detection of face
   
   size(cam.rgbWidth(), cam.rgbHeight()); //size of window
 }
 
-void update()
+void draw()
 {
   cam.update(); //get new frame/info from kinect
   opencv.copy(cam.rgbImage()); //get the current frame into opencv
-}
-
-void draw()
-{
-  update(); //all logic done here
+  faceRect = opencv.detect(false);
   
-  image(opencv.getBuffer(), 0, 0); //draw the image on the screen
+  image(cam.rgbImage(), 0, 0); //draw the image on the screen
+  opencv.drawRectDetect (false); //draw rectangles on faces
 }
 

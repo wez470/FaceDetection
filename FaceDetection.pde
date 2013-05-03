@@ -5,28 +5,30 @@ import SimpleOpenNI.*;
 import monclubelec.javacvPro.*;
 
 OpenCV opencv; 
-PImage imgSrc;
 SimpleOpenNI cam;
-boolean mirror= true;
 
 void setup()
 {
-  cam = new SimpleOpenNI(this);
+  cam = new SimpleOpenNI(this); //initialize kinect camera
   cam.setMirror(true);
   cam.enableRGB(); //using the RGB camera.  Can not use IR camera now.
-  size(cam.rgbWidth(), cam.rgbHeight());
+  
+  opencv = new OpenCV(this);
+  opencv.allocate(cam.rgbWidth(), cam.rgbHeight()); //size of image buffer
+  
+  size(cam.rgbWidth(), cam.rgbHeight()); //size of window
 }
 
 void update()
 {
-  cam.update(); //get new info from kinect
+  cam.update(); //get new frame/info from kinect
+  opencv.copy(cam.rgbImage()); //get the current frame into opencv
 }
 
 void draw()
 {
-  update();
+  update(); //all logic done here
   
-  image(cam.rgbImage(), 0, 0);
-  image(cam.rgbImage(), cam.rgbWidth(), 0);
+  image(opencv.getBuffer(), 0, 0); //draw the image on the screen
 }
 

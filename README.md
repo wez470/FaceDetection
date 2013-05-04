@@ -3,7 +3,7 @@ FaceDetection
 
 Summary
 -------------
-A small program written in processing to detect a face using the kinect.
+A small program written in processing to detect faces using the kinect.
 
 
 Details

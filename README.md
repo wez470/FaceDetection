@@ -14,8 +14,6 @@ Versions of software and libraries used are as follows:
   - Processing 1.5.1
   - SimpleOpenNI-0.27
   - javacvPro-0.5
-  - javacpp-0.5
-  - javacv-0.5
   - OpenCV-2.3.1
 
 

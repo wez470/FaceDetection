@@ -28,7 +28,7 @@ void draw()
 {
   cam.update(); //get new frame/info from kinect
   opencv.copy(cam.rgbImage()); //get the current frame into opencv
-  faceRect = opencv.detect(false);
+  faceRect = opencv.detect(false); //get rectangle array of faces
   
   image(cam.rgbImage(), 0, 0); //draw the image on the screen
   opencv.drawRectDetect (false); //draw rectangles on faces

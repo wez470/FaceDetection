@@ -17,3 +17,8 @@ Versions of software and libraries used are as follows:
   - javacpp-0.5
   - javacv-0.5
   - OpenCV-2.3.1
+
+
+How to Run
+-------------
+Open and run the file in processing
